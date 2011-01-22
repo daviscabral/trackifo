@@ -38,7 +38,7 @@ module Trackifo
     end
 
     post '/login' do
-      if user = User.auth(params[:user], params[:pass])
+      if user = User.auth(params[:email], params[:password])
         session['user_id'] = user.id
       else
         flash[:notice] = "Invalid user/pass! Try it again! (y)"

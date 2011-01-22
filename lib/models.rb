@@ -22,7 +22,7 @@ class User < Sequel::Model
   end
 
   def self.auth(email, password)
-    u = filter({:email => email})
+    u = User[:email => email]
     u && u.authenticated?(password) ? u : nil
   end
 
