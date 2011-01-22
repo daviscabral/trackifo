@@ -1,0 +1,12 @@
+tracker:
+  user: ""
+  token: ""
+notifo:
+  user: "your_service_username"
+  token: "your_service_api_secret"
+database:
+  user: root
+  pass:
+  database: trackifo
+  adapter: mysql
+  host: localhost

@@ -1,0 +1,4 @@
+- if session['user_id']
+ = haml :logged_in
+- else
+ = haml :logged_out

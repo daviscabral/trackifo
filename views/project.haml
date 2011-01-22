@@ -1,0 +1,21 @@
+%h2== Project: #{@project.name}
+
+.left
+  %h3 Subscriptions
+  - if @subscriptions.empty?
+    .empty
+      No one will receive any message here :(
+      %br
+      Add someone there ----->
+  - else
+    %ul
+      - @subscriptions.each do |subscription|
+        %li== <a href="/unsubscribe/#{@project.id}/u/#{subscription.id}" onclick="return confirm('Are you sure about unsubscribe this user?');">#{subscription.username}</a>
+
+.new-project.right
+  %form{:action => "/subscribe/#{@project.id}", :method => 'post'}
+    %h2 New subscription
+    .field
+      %label Notifo Username
+      %input{:name => :username}
+    %button{:type => "submit"} Create

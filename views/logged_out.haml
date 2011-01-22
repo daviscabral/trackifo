@@ -1,0 +1,24 @@
+.left.login
+  %form{:action => '/login', :method => 'post'}
+    %h2 Login
+    .field
+      %label E-mail
+      %input{:name => "email"}
+    .field
+      %label Password
+      %input{:type => "password", :name => "password"}
+
+    %button{:type => "submit"} Login
+
+
+.new.right
+  %form{:action => '/create', :method => 'post'}
+    %h2 New Account
+    .field
+      %label E-mail
+      %input{:name => "email"}
+    .field
+      %label Password
+      %input{:type => "password", :name => "password"}
+
+    %button{:type => "submit"} Create Account

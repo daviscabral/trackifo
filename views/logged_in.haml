@@ -1,0 +1,22 @@
+.projects.left
+  %h2 Projects
+  - if @projects.empty?
+    .empty
+      No projects here :(
+      %br
+      Add one there ----->
+  - else
+    %ul
+      - @projects.each do |project|
+        %li== <a href="/project/#{project.id}">#{project.name}</a>
+
+.new-project.right
+  %form{:action => '/project/create', :method => 'post'}
+    %h2 New project
+    .field
+      %label Name
+      %input{:name => :name}
+    .field
+      %label Tracker ID
+      %input{:name => :tracker_id}
+    %button{:type => "submit"} Create
