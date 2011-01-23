@@ -25,6 +25,12 @@ module Trackifo
       register Sinatra::Reloader
     end
 
+    def redirect_if_not_logged_in
+      unless session['user_id']
+        redirect '/'
+      end
+    end
+
     set :public, File.dirname(__FILE__) + '/public'
     enable :sessions
     use Rack::Flash
@@ -46,12 +52,13 @@ module Trackifo
       redirect '/'
     end
 
-    post '/bye' do
+    get '/bye' do
       session['user_id'] = nil
       haml :bye
     end
 
     post '/project/create' do
+      redirect_if_not_logged_in
       project = Project.new(params)
       project.user_id = session['user_id']
       if project.save
@@ -75,6 +82,7 @@ module Trackifo
     end
 
     get '/unsubscribe/:project_id/u/:subscription_id' do
+      redirect_if_not_logged_in
       project = Project[:id => params[:project_id]]
       subscription = project.subscriptions.filter(:id => params[:subscription_id])
       if subscription.destroy
@@ -86,6 +94,7 @@ module Trackifo
     end
 
     post '/subscribe/:project_id' do
+      redirect_if_not_logged_in
       project = Project[:id => params[:project_id]]
       subscription = Subscription.new(:username => params[:username], :project_id => project.id)
       if subscription.save
@@ -122,8 +131,9 @@ module Trackifo
     end
 
     get '/project/:id' do
-      @project = Project[:id => params[:id]]
-      @subscriptions = Subscription.filter(:project_id => @project.id)
+      redirect_if_not_logged_in
+      @project = Project[:id => params[:id], :user_id => session['user_id']]
+      @subscriptions = @project.subscriptions
       haml :project
     end
 

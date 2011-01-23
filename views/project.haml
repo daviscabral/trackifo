@@ -1,5 +1,10 @@
 %h2== Project: #{@project.name}
 
+%p
+  Hook URL:
+  %a{:href => "http://trackifo.daviscabral.com.br/notify/#{@project.id}"}
+    == http://trackifo.daviscabral.com.br/notify/#{@project.id}
+
 .left
   %h3 Subscriptions
   - if @subscriptions.empty?
@@ -10,7 +15,8 @@
   - else
     %ul
       - @subscriptions.each do |subscription|
-        %li== <a href="/unsubscribe/#{@project.id}/u/#{subscription.id}" onclick="return confirm('Are you sure about unsubscribe this user?');">#{subscription.username}</a>
+        %li
+          == <a href="/unsubscribe/#{@project.id}/u/#{subscription.id}" onclick="return confirm('Are you sure about unsubscribe this user?');">#{subscription.username}</a>
 
 .new-project.right
   %form{:action => "/subscribe/#{@project.id}", :method => 'post'}

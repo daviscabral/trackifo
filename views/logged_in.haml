@@ -8,7 +8,9 @@
   - else
     %ul
       - @projects.each do |project|
-        %li== <a href="/project/#{project.id}">#{project.name}</a>
+        %li
+          == <a href="/project/#{project.id}">#{project.name}</a>
+          == (#{project.subscriptions.count} subscriptions)
 
 .new-project.right
   %form{:action => '/project/create', :method => 'post'}

@@ -6,7 +6,13 @@
   %body
     #wrapper
       #header
-        %h1 Trackifo
+        %h1
+          %a{:href => "/"} Trackifo
+          - if session['user_id']
+            %span
+              (
+              %a{:href => "/bye"} Logout
+              )
         %p Pivotal Tracker activity notifications through Notifo.
 
       - if flash[:notice]

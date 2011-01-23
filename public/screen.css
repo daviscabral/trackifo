@@ -28,6 +28,10 @@ h1 {
   background: transparent url(/site-ico.png) no-repeat;
 }
 
+h1 span {
+  font-size: 15px;
+}
+
 label {
   display: block;
 }
@@ -60,4 +64,10 @@ div.right {
 
 div.right form {
   padding: 0 0 0 20px;
+}
+
+ul, ul li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }

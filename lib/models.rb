@@ -43,6 +43,10 @@ class User < Sequel::Model
     self.salt ||= Digest::SHA1.hexdigest("--#{Time.now.to_s}--#{email}--")
     self.crypted_password = encrypt(password)
   end
+
+  def projects
+    Project.filter(:user_id => id)
+  end
 end
 
 class Project < Sequel::Model
@@ -54,6 +58,10 @@ class Project < Sequel::Model
     super
     validates_presence [:name, :tracker_id]
     validates_unique :tracker_id
+  end
+
+  def subscriptions
+    Subscription.filter(:project_id => id)
   end
 end
 
