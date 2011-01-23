@@ -43,6 +43,15 @@ label {
   color: #0C9DEC;
 }
 
+.flash ul {
+  margin-left: 10px;
+}
+
+.flash ul li {
+  list-style: square;
+  margin-left: 20px;
+}
+
 input {
   background-color: #000;
   color: #0C9DEC;

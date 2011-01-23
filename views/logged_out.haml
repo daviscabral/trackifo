@@ -3,7 +3,7 @@
     %h2 Login
     .field
       %label E-mail
-      %input{:name => "email"}
+      %input{:name => "email", :value => params[:email]}
     .field
       %label Password
       %input{:type => "password", :name => "password"}
@@ -16,7 +16,7 @@
     %h2 New Account
     .field
       %label E-mail
-      %input{:name => "email"}
+      %input{:name => "email", :value => params[:email]}
     .field
       %label Password
       %input{:type => "password", :name => "password"}

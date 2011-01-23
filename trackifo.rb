@@ -76,7 +76,8 @@ module Trackifo
         flash[:notice] = "Welcome aboard!"
         redirect '/'
       else
-        flash[:notice] = "Only 3 fields and you did wrong... Try it again! :)"
+        flash[:notice] = "Something is wrong: <br /><ul><li>"
+        flash[:notice] << user.errors.full_messages.join("</li><li>") << "</li></ul>"
         haml :index
       end
     end
