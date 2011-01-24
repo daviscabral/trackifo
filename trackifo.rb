@@ -120,7 +120,7 @@ module Trackifo
         title = activity.xpath("//activity/event_type").first.children.text.gsub("_", " ").titleize
         msg = activity.xpath("//activity/description").first.children.text
         id = activity.xpath("//activity/stories").first.xpath("//id").first.children.text
-        url = "https://www.pivotaltracker.com/story/show/#{id}"
+        uri = "https://www.pivotaltracker.com/story/show/#{id}"
         content_type :json
         response = []
         subscriptions.each do |subscription|
