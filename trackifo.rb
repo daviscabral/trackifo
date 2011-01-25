@@ -8,16 +8,11 @@ require 'nokogiri'
 require 'json'
 require 'httparty'
 require 'titleize'
-
-configure :development do |config|
-  require "sinatra/reloader"
-  config.also_reload "lib/*.rb"
-end
-
 require 'lib/notifo'
 require 'lib/init'
 require 'lib/models'
 require 'rack-flash'
+require "sinatra/reloader"
 
 module Trackifo
   class Application < Sinatra::Base

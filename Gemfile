@@ -13,6 +13,7 @@ gem 'sinatra-reloader'
 gem 'titleize'
 
 group :test, :development do
+  gem "rack-test"
   gem "mocha"
   gem "rspec"
 end
